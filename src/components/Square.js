@@ -1,5 +1,9 @@
 import React from "react";
 
-export const Square = () => {
-    return <button>1</button>;
+export const Square = ({ value }) => {
+    return (
+        <button type="button" className="square">
+            {value}
+        </button>
+    );
 };

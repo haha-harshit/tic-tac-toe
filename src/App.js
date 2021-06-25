@@ -1,22 +1,18 @@
 // import logo from "./logo.svg";
 // import "./App.css";
+
 import { Board } from "./components/Board";
 
-function App() {
-    let myStyle = {
-        marginLeft: "10px",
-        // backgroundColor: "red",
-    };
+import "./componentStyle/root.scss";
 
+function App() {
     return (
         <>
-            <div className="App">
-                <div style={myStyle}>
-                    <header className="App-header">
-                        <h1>Tic Tac Toe</h1>
-                    </header>
-                    <Board />
-                </div>
+            <div className="app">
+                <header className="App-header">
+                    <h1>Tic Tac Toe ✔</h1>
+                </header>
+                <Board />
             </div>
         </>
     );
