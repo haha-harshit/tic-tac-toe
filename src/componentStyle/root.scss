@@ -17,9 +17,15 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    .message {
+        margin-bottom: 30px;
+    }
 }
 
 .board {
+    // position: absolute;
+    // top: 250px;
+    // margin: auto;
     .board-row {
         display: flex;
         flex-direction: row;
