@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import { Board } from "./components/Board";
+import { History } from "./components/History";
 import { calculateWinner } from "./helpers";
 
 import "./componentStyle/root.scss";
@@ -52,6 +53,10 @@ function App() {
         // setIsXNext((prev) => !prev);
     };
 
+    const moveTo = (move) => {
+        setCurrentMove(move);
+    };
+
     return (
         <>
             <div className="app">
@@ -62,6 +67,11 @@ function App() {
                 <Board
                     board={current.board}
                     handleSquareClick={handleSquareClick}
+                />
+                <History
+                    history={history}
+                    moveTo={moveTo}
+                    currentMove={currentMove}
                 />
             </div>
         </>
