@@ -9,10 +9,11 @@ import { calculateWinner } from "./helpers";
 
 import "./componentStyle/root.scss";
 
+// variable for new game
+const NEW_GAME = [{ board: Array(9).fill(null), isXNext: true }];
+
 function App() {
-    const [history, setHistory] = useState([
-        { board: Array(9).fill(null), isXNext: true },
-    ]);
+    const [history, setHistory] = useState(NEW_GAME);
 
     const [currentMove, setCurrentMove] = useState(0);
 
@@ -20,7 +21,7 @@ function App() {
 
     console.log("History", history);
 
-    const winner = calculateWinner(current.board);
+    const { winner, winningSquares } = calculateWinner(current.board);
 
     console.log(winner);
 
@@ -37,7 +38,7 @@ function App() {
 
             const newBoard = last.board.map((Square, pos) => {
                 if (pos === position) {
-                    return last.isXNext ? "❌" : "⭕";
+                    return last.isXNext ? "X" : "O";
                 }
                 return Square;
             });
@@ -54,6 +55,12 @@ function App() {
         setCurrentMove(move);
     };
 
+    // new game function
+    const onNewGame = () => {
+        setHistory(NEW_GAME);
+        setCurrentMove(0);
+    };
+
     return (
         <>
             <div className="app">
@@ -64,7 +71,13 @@ function App() {
                 <Board
                     board={current.board}
                     handleSquareClick={handleSquareClick}
+                    winningSquares={winningSquares}
                 />
+
+                <button type="button" onClick={onNewGame}>
+                    Start New Game
+                </button>
+
                 <History
                     history={history}
                     moveTo={moveTo}
