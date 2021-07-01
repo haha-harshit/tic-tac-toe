@@ -65,7 +65,9 @@ function App() {
         <>
             <div className="app">
                 <header className="App-header">
-                    <h2>Tic Tac Toe ✔</h2>
+                    <h2>
+                        TIC <span className="text-green">TAC</span> TOE
+                    </h2>
                 </header>
                 <StatusMessage winner={winner} current={current} />
                 <Board
@@ -74,15 +76,20 @@ function App() {
                     winningSquares={winningSquares}
                 />
 
-                <button type="button" onClick={onNewGame}>
+                <button
+                    type="button"
+                    onClick={onNewGame}
+                    className={`btn-reset ${winner ? "active" : ""}`}
+                >
                     Start New Game
                 </button>
-
+                <h4 style={{ fontWeight: "normal" }}>Current Game History</h4>
                 <History
                     history={history}
                     moveTo={moveTo}
                     currentMove={currentMove}
                 />
+                <div className="bg-balls"></div>
             </div>
         </>
     );
